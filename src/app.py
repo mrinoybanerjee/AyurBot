@@ -19,8 +19,10 @@ rag_model = RAGModel(
     api_token=API_TOKEN
 )
 
+st.set_page_config(page_title="AyurGPT", page_icon="🌿", layout="wide")
+
 # Define your query
-query = st.text_input("Message AyurBot: ")
+query = st.text_input("Message AyurGPT: ")
 
 # Perform semantic search and generate an answer
 answer = rag_model.generate_answer(query)
