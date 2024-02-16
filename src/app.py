@@ -12,12 +12,15 @@ MONGODB_COLLECTION = str(os.getenv("MONGODB_COLLECTION"))
 API_TOKEN = str(os.getenv("API_TOKEN"))
 
 # Initialize the RAGModel with your MongoDB and Replicate settings
-rag_model = RAGModel(
-    mongo_connection_string=MONGODB_CONNECTION_STRING,
-    mongo_database=MONGODB_DATABASE,
-    mongo_collection=MONGODB_COLLECTION,
-    api_token=API_TOKEN
-)
+# Make sure streamlit is caching the model
+@st.cache(allow_output_mutation=True)
+def load_model():
+    return RAGModel(
+        mongo_connection_string=MONGODB_CONNECTION_STRING,
+        mongo_database=MONGODB_DATABASE,
+        mongo_collection=MONGODB_COLLECTION,
+        api_token=API_TOKEN
+    )
 
 # Streamlit app customization
 st.set_page_config(page_title="AyurGPT", page_icon="🌿")
@@ -51,6 +54,11 @@ st.write("AyurGPT is a conversational AI model that can answer questions related
 query = st.text_input("Message AyurGPT: ")
 
 # Perform semantic search and generate an answer
+rag_model = load_model()
+# give users feedback that the model is loading
+if query:
+    st.write("AyurGPT is brewing wisdom just for you ✨, please hold on for a moment...")
+
 answer = rag_model.generate_answer(query)
 
 # Print the generated answer
