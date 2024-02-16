@@ -6,10 +6,10 @@ from model import RAGModel
 # Load the environment variables
 load_dotenv()
 
-MONGODB_CONNECTION_STRING = os.getenv("MONGODB_URI")
-MONGODB_DATABASE = os.getenv("MONGODB_DATABASE")
-MONGODB_COLLECTION = os.getenv("MONGODB_COLLECTION")
-API_TOKEN = os.getenv("API_TOKEN")
+MONGODB_CONNECTION_STRING = str(os.getenv("MONGODB_URI"))
+MONGODB_DATABASE = str(os.getenv("MONGODB_DATABASE"))
+MONGODB_COLLECTION = str(os.getenv("MONGODB_COLLECTION"))
+API_TOKEN = str(os.getenv("API_TOKEN"))
 
 # Initialize the RAGModel with your MongoDB and Replicate settings
 rag_model = RAGModel(
