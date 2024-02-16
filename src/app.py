@@ -27,7 +27,7 @@ hide_default_format = """
        footer {visibility: hidden;}
        </style>
        """
-st.markdown(hide_default_format, unsafe_allow_html=True)'
+st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # Define your query
 query = st.text_input("Message AyurGPT: ")
