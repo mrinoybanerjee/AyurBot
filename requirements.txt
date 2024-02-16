@@ -1,6 +1,6 @@
 pymongo==3.12.0  # For MongoDB database operations
 numpy==1.19.5  # For numerical operations, especially with arrays
-scipy==1.7.1  # For scientific computing, including cosine similarity
+scipy==1.12.2  # For scientific computing, including cosine similarity
 sentence-transformers==2.2.0  # For generating sentence embeddings
 replicate==0.2.0  # For interacting with the Replicate API
 fitz==0.0.1.dev2  # You mentioned PyMuPDF, but the correct package is pymupdf
