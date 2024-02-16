@@ -1,19 +1,21 @@
-# AyurGPT
+# AyurBot
+
 
 ## Project Overview
 
-"AyurGPT: Your Digital Guide to Ancient Ayurvedic Wisdom"
-AyurGPT is a chatbot designed to offer personalized Ayurvedic health advice. Leveraging the ancient Indian wisdom of Ayurveda, this bot provides users with lifestyle and dietary recommendations based on their unique body constitution (Prakriti). Whether you're looking for natural remedies, daily routines, or nutritional guidance, AyurGPT is here to support your journey towards holistic well-being.
+"AyurBot: Your Digital Guide to Ancient Ayurvedic Wisdom"
+
+AyurBot is a chatbot designed to offer personalized Ayurvedic health advice. Leveraging the ancient Indian wisdom of Ayurveda, this bot provides users with lifestyle and dietary recommendations based on their unique body constitution (Prakriti). Whether you're looking for natural remedies, daily routines, or nutritional guidance, AyurBot is here to support your journey towards holistic well-being.
 
 ## Installation
 
-To get AyurGPT up and running on your local machine, follow these steps:
+To get AyurBot up and running on your local machine, follow these steps:
 
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/AyurGPT.git
-cd AyurGPT
+git clone https://github.com/yourusername/AyurBot.git
+cd AyurBot
 ```
 
 2. **Set up a virtual environment (optional but recommended):**
@@ -31,14 +33,14 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Before launching AyurGPT, configure the environment variables:
+Before launching AyurBot, configure the environment variables:
 
 1. Rename the `.env.example` file to `.env`.
 2. Fill in the necessary values in `.env`, such as API keys, database connection strings, or other configuration details specific to your environment.
 
 ## Usage
 
-To start AyurGPT, navigate to the `src` directory and run the main script:
+To start AyurBot, navigate to the `src` directory and run the main script:
 
 ```bash
 cd src
@@ -49,7 +51,7 @@ Follow the on-screen instructions to interact with the bot.
 
 ## Data Management
 
-The `data` directory contains essential datasets and resources used by AyurGPT. Here, you'll find information on herbs, dietary recommendations, and Ayurvedic practices. Ensure this data is updated and accurate to enhance the bot's effectiveness.
+The `data` directory contains essential datasets and resources used by AyurBot. Here, you'll find information on herbs, dietary recommendations, and Ayurvedic practices. Ensure this data is updated and accurate to enhance the bot's effectiveness.
 
 ## Contact
 
@@ -57,9 +59,9 @@ For support, further information, or to contribute to the project, please reach 
 
 ## Project Walkthrough
 
-### AyurGPT: Using RAG Based LLM
+### AyurBot: Using RAG Based LLM
 
-This section provides a step-by-step guide to integrating a Retrieval-Augmented Generation (RAG) based Large Language Model (LLM) into AyurGPT, enhancing its ability to provide accurate and relevant Ayurvedic health advice.
+This section provides a step-by-step guide to integrating a Retrieval-Augmented Generation (RAG) based Large Language Model (LLM) into AyurBot, enhancing its ability to provide accurate and relevant Ayurvedic health advice.
 
 
 #### Text Extraction from Book
@@ -92,11 +94,11 @@ This section provides a step-by-step guide to integrating a Retrieval-Augmented 
 
 ## Deployment
 
-The AyurGPT application is deployed on Streamlit and is available for public use. This deployment allows users to interact with AyurGPT through a user-friendly web interface, making it accessible to anyone interested in Ayurvedic guidance.
+The AyurBot application is deployed on Streamlit and is available for public use. This deployment allows users to interact with AyurBot through a user-friendly web interface, making it accessible to anyone interested in Ayurvedic guidance.
 
 ## Repository Structure
 
-Below is the structure of the AyurGPT repository, providing a clear overview of its organization and contents:
+Below is the structure of the AyurBot repository, providing a clear overview of its organization and contents:
 
 ```
 .
