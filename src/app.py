@@ -29,7 +29,7 @@ hide_default_format = """
        #MainMenu {visibility: hidden; }
        footer {visibility: hidden;}
        .reportview-container {
-            background: #092532
+            background: #091c23
        }
        /* Center the logo */
        .logo-img {
@@ -45,7 +45,7 @@ st.markdown(
     """
     <style>
     div.stButton > button:first-child {
-        background-color: #091c23;
+        background-color: #00b8a9;
         color: white;
         font-size: 18px;
         font-weight: bold;
