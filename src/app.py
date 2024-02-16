@@ -29,6 +29,20 @@ hide_default_format = """
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
+# Add logo from the .streamlit folder
+st.image("/Users/mrinoyb2/git/AyurBot/src/.streamlit/AyurGPT.jpeg", use_column_width=True)
+
+# set background color
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: #092532
+    }
+   </style>
+   """
+)
+
 # Define your query
 query = st.text_input("Message AyurGPT: ")
 
