@@ -25,23 +25,27 @@ hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
        footer {visibility: hidden;}
+       .reportview-container {
+            background: #092532
+       }
+       /* Center the logo */
+       .logo-img {
+           display: flex;
+           justify-content: center;
+       }
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-# Add logo from the .streamlit folder
-st.image("/Users/mrinoyb2/git/AyurBot/src/.streamlit/AyurGPT.jpeg", use_column_width=True)
+# Display logo at the center
+st.markdown("<div class='logo-img'>", unsafe_allow_html=True)
+st.image("src/.streamlit/AyurGPT.jpeg", width=200)  # Adjust the path and width as needed
+st.markdown("</div>", unsafe_allow_html=True)
 
-# set background color
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background: #092532
-    }
-   </style>
-   """
-)
+# Display title and description
+st.title("AyurGPT")
+st.write("AyurGPT is a conversational AI model that can answer questions related to Ayurveda.")
+
 
 # Define your query
 query = st.text_input("Message AyurGPT: ")
