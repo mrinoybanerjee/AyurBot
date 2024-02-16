@@ -19,7 +19,15 @@ rag_model = RAGModel(
     api_token=API_TOKEN
 )
 
-st.set_page_config(page_title="AyurGPT", page_icon="🌿", layout="wide")
+# Streamlit app customization
+st.set_page_config(page_title="AyurGPT", page_icon="🌿")
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)'
 
 # Define your query
 query = st.text_input("Message AyurGPT: ")

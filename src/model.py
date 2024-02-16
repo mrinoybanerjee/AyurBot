@@ -46,7 +46,7 @@ class RAGModel:
         similarities.sort(key=lambda x: x[1], reverse=True)
         return similarities[:top_k]
 
-    def generate_answer(self, question, max_context_length=1000):
+    def generate_answer(self, question, max_context_length=500):
         """
         Generates an answer to a given question using the best context found by semantic search
         and the LLaMA2 model from Replicate.
