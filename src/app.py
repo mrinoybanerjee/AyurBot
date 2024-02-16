@@ -40,6 +40,30 @@ hide_default_format = """
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
+# Add an enter button to submit the query
+st.markdown(
+    """
+    <style>
+    div.stButton > button:first-child {
+        background-color: #091c23;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add a custom footer
+footer = """
+    <style>
+    .reportview-container .main footer {visibility: hidden;}    
+    </style>
+    """
+st.markdown(footer, unsafe_allow_html=True)
+
+
 # Display logo at the center
 st.markdown("<div class='logo-img'>", unsafe_allow_html=True)
 st.image("src/.streamlit/AyurGPT.jpeg", width=200)  # Adjust the path and width as needed
