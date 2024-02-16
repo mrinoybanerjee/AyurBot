@@ -139,8 +139,6 @@ tensorflow-decision-forests==1.8.1
 tensorflow-estimator==2.15.0
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.36.0
-tensorflow-macos==2.15.0
-tensorflowjs==4.17.0
 tensorstore==0.1.45
 termcolor==2.4.0
 tf-keras==2.15.0
