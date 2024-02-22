@@ -25,7 +25,6 @@ class PreprocessPDF:
         self.db = self.client[self.mongo_database]
         self.collection = self.db[self.mongo_collection]
         self.model = SentenceTransformer('all-MiniLM-L6-v2')  # Load the model for embeddings
-        nltk.download('punkt')  # Ensure the punkt tokenizer is downloaded
     
     @staticmethod
     def preprocess_text_mupdf(text):
