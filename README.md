@@ -111,10 +111,13 @@ Below is the structure of the AyurGPT repository, providing a clear overview of 
 ├── notebooks
 │   └── rag_model.ipynb
 ├── requirements.txt
+├── reports
+|     └── RAG_evaluation_report.md
 └── src
     ├── __pycache__
     │   └── model.cpython-311.pyc
     ├── app.py
+    ├── evaluate.py
     ├── main.py
     ├── model.py
     └── preprocess.py
