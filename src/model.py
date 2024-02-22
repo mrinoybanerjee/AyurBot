@@ -90,3 +90,81 @@ class RAGModel:
             answer = "Sorry, I don't have an answer for that."
 
         return answer
+    
+
+    def generate_RAG_answer(self, question, max_context_length=500):
+        """
+        Generates an answer to a given question using the best context found by RAG based semantic search
+        and the LLaMA2 model from Replicate.
+        
+        :param question: The question to generate an answer for.
+        :param max_context_length: Maximum length of the context to be considered.
+        :return: Generated answer as a string.
+        """
+        context_results = self.semantic_search(question, top_k=1)
+        context = context_results[0][2]
+        if len(context) > max_context_length:
+            context = context[:max_context_length]
+        prompt = f"[INST]\nQuestion: {question}\nContext: {context}\n[/INST]"
+
+        replicate_client = Client(api_token=self.api_token)
+        output = replicate_client.run(
+            "nwhitehead/llama2-7b-chat-gptq:8c1f632f7a9df740bfbe8f6b35e491ddfe5c43a79b43f062f719ccbe03772b52",
+            input={
+                "seed": -1,
+                "top_k": 20,
+                "top_p": 1,
+                "prompt": prompt,
+                "max_tokens": 1024,
+                "min_tokens": 1,
+                "temperature": 0.5,
+                "repetition_penalty": 1
+            }
+        )
+
+        answer = ""
+        # Concatenate the output items into a single string
+        for item in output:
+            answer += item
+
+        # Handle the case where the answer is empty
+        if not answer:
+            answer = "Sorry, I don't have an answer for that."
+
+        return answer
+    
+
+    def generate_non_RAG_answer(self, question):
+            """
+            Generates an answer to a given question using only the LLaMA2 model from Replicate.
+            
+            :param question: The question to generate an answer for.
+            :return: Generated answer as a string.
+            """
+            prompt = f"[INST]\nQuestion: {question}\n[/INST]"
+
+            replicate_client = Client(api_token=self.api_token)
+            output = replicate_client.run(
+                "nwhitehead/llama2-7b-chat-gptq:8c1f632f7a9df740bfbe8f6b35e491ddfe5c43a79b43f062f719ccbe03772b52",
+                input={
+                    "seed": -1,
+                    "top_k": 20,
+                    "top_p": 1,
+                    "prompt": prompt,
+                    "max_tokens": 1024,
+                    "min_tokens": 1,
+                    "temperature": 0.5,
+                    "repetition_penalty": 1
+                }
+            )
+
+            answer = ""
+            # Concatenate the output items into a single string
+            for item in output:
+                answer += item
+
+            # Handle the case where the answer is empty
+            if not answer:
+                answer = "Sorry, I don't have an answer for that."
+
+            return answer

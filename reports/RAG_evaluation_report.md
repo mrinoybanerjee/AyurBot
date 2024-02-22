@@ -80,16 +80,34 @@ I hope this helps you make a delicious and healthy agni tea at home!
 
 ### Scores
 
+**Agni tea example**
+
 | Model | Cosine Similarity Score |
 |---|---|
 | True | - (Reference) |
-| RAG-based LLM | 0.6471 |
-| Non-RAG LLM | 0.5113 |
+| RAG-based LLM | 0.6427 |
+| Non-RAG LLM | 0.5181 |
+
+**Average across 5 experiments**
+
+After running cosine similarities for 5 different questions, I got the following secores:
+
+| Query | RAG-based LLM | Non-RAG LLM |
+|---|---|---|
+| What are the types of Arthritis? | 0.7213 | 0.67017 |
+| How to control high blood sugar?| 0.5806 | 0.5312 |
+| What are headaches? | 0.5987 | 0.5916 |
+| What are some herbs for hypertension? | 0.7565 | 0.6265 |
+| What are some herbs for memory? | 0.018 | 0.025 |
+
+The average RAG similarity score was 0.535 which outperformed the non-RAG approach with an average similarity score of 0.488.
+
 
 ### Analysis
 
-- The RAG-based LLM achieved a higher cosine similarity score (0.6471) compared to the non-RAG LLM (0.5113) when both answers were compared to the true answer from the book. This indicates that the RAG-based LLM's answer was textually closer to the accurate recipe. It looks like the non-RAG LLM gave a generic masala chai recipe instead of specifically the agni tea recipe.
+- The RAG-based LLM achieved a higher cosine similarity score (0.6471) compared to the non-RAG LLM (0.5113) when both answers were compared to the true answer from the book. This indicates that the RAG-based LLM's answer was textually closer to the accurate recipe. The non-RAG LLM answer missed important details such as "add pinch of cayenne pepper", "1/2 teaspoon of rocksalt", "Do not boil the lime juice". It looks like the non-RAG LLM gave a generic masala chai recipe instead of specifically the agni tea recipe.
 - While the difference in scores might seem small, it signifies a stronger contextual alignment of the RAG-based LLM's answer with the factual details and specific ingredients mentioned in the reference source. This suggests that RAG-based models, by leveraging external knowledge bases, can potentially produce more factually accurate responses, especially in highly specialized domains like Ayurveda.
+
 
 ### Importance of RAGs for Domain-Specific Topics
 
@@ -105,7 +123,11 @@ Ayurveda is a complex and nuanced medical system with its own terminology, conce
 
 This case study provides preliminary evidence that RAG-based LLMs might have an advantage over non-RAG LLMs in terms of factual accuracy, especially when dealing with extremely domain-specific topics like Ayurveda. Further research with more diverse queries, models, and evaluation methods is needed to draw more definitive conclusions.
 
-### Code (also in the rag_model jupyter notebook within the notebooks folder)
+### Usage
+
+Choose option "2" after running python main.py from the src directory to activate evaluate mode. Once activated, it will ask you to enter your query and the true answer from the source. Once you enter that, it will give you the RAG based as well as the Non-RAG based answers along with their similarity scores with the true answer. The answer with the higher similarity score caputres the true essense of the answer given in the original source.
+
+### Code
 
 ```python
 def get_embedding(text):
@@ -121,7 +143,7 @@ def get_embedding(text):
     # Load the sentence transformer model
     model = SentenceTransformer('all-MiniLM-L6-v2')
     # Generate the sentence embeddings
-    embeddings = model.encode(text, convert_to_tensor=True)
+    embeddings = model.encode(text, convert_to_tensor=False)
     return embeddings
 
 
@@ -137,16 +159,12 @@ def calculate_cosine_similarity(embedding1, embedding2):
     - The cosine similarity score.
     """
     # Calculate the cosine similarity
-    if len(embedding1.shape) == 1:
-        embedding1 = embedding1.unsqueeze(0)
-    if len(embedding2.shape) == 1:
-        embedding2 = embedding2.unsqueeze(0)
-    similarity = torch.nn.functional.cosine_similarity(embedding1, embedding2, dim=1)
-    return similarity.item()
+    similarity = 1 - cosine(embedding1, embedding2)
+    return similarity
 
 
 def calculate_similarity_scores(true_answer, rag_answer, non_rag_answer):
-     """
+    """
     Calculate the cosine similarity scores between the true answer and both RAG-based and non-RAG-based answers.
 
     Args:
@@ -177,3 +195,5 @@ def calculate_similarity_scores(true_answer, rag_answer, non_rag_answer):
 # Calculate the similarity scores
 similarity_scores = calculate_similarity_scores(true_answer, rag_answer, non_rag_answer)
 print(similarity_scores)
+
+
