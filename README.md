@@ -1,4 +1,4 @@
-# AyurGPT
+# AyurGPT🌿 
 
 
 ## Project Overview
