@@ -45,6 +45,7 @@ class RAGModel:
             similarities.append((document['_id'], similarity, document['text']))
         similarities.sort(key=lambda x: x[1], reverse=True)
         return similarities[:top_k]
+    
 
     def generate_answer(self, question, max_context_length=500):
         """

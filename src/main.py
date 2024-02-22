@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/Users/mrinoyb2/git/AyurBot/src/model.py')
-from model import RAGModel  # Assuming your class is saved as rag_model.py
+from model import RAGModel
 import os
 from dotenv import load_dotenv
 
