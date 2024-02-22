@@ -1,7 +1,5 @@
 import re
 import fitz  # PyMuPDF, used for reading PDF files
-import nltk
-from nltk.tokenize import sent_tokenize  # NLTK for sentence tokenization
 import pymongo
 from sentence_transformers import SentenceTransformer  # For generating text embeddings
 
@@ -64,8 +62,19 @@ class PreprocessPDF:
         :param text: Cleaned text to be split into sentences.
         :return: A list of sentences extracted from the text.
         """
-        return sent_tokenize(text)
-    
+        sentences = []
+        tmp_sentence = ""
+        for char in text:
+            if char in [".", "!", "?"]:
+                sentences.append(tmp_sentence)
+                tmp_sentence = ""
+            else:
+                tmp_sentence += char
+        # Add any remaining text as the last sentence
+        if tmp_sentence:
+            sentences.append(tmp_sentence)
+        return sentences
+        
     def store_chunks_in_mongodb(self, chunks):
         """
         Stores each chunk of text as a separate document in a MongoDB collection.

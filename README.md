@@ -55,7 +55,7 @@ The `data` directory contains essential datasets and resources used by AyurBot. 
 
 ## Contact
 
-For support, further information, or to contribute to the project, please reach out to me at mrinoybanerjee@gmail.com.
+For support, further information, or to contribute to the project, please reach out to me at mrinoybanerjee@gmail.com
 
 ## Project Walkthrough
 
@@ -74,8 +74,8 @@ This section provides a step-by-step guide to integrating a Retrieval-Augmented 
 #### Store Chunks in MongoDB Database
 
 1. **Database Connection**: Connect to MongoDB database. Update the connection string as per your setup.
-2. **Text Chunking**: Implement a function to chunk text by sentence for efficient storage and retrieval.
-3. **Data Storage**: Store these chunks in MongoDB, creating a document for each chunk.
+2. **Text Chunking**: Implemented a function to chunk text by sentence for efficient storage and retrieval.
+3. **Data Storage**: Stored these chunks in MongoDB, creating a document for each chunk.
 
 
 #### Create Word Embeddings
@@ -85,11 +85,11 @@ This section provides a step-by-step guide to integrating a Retrieval-Augmented 
 
 #### RAG: Semantic Search Retrieval
 
-1. **Semantic Search Functionality**: Implement a function to perform semantic search. This involves generating a query embedding, retrieving and comparing all stored embeddings from MongoDB, and returning the most relevant documents based on similarity.
+1. **Semantic Search Functionality**: Implemented a function to perform semantic search. This involves generating a query embedding, retrieving and comparing all stored embeddings from MongoDB, and returning the most relevant documents based on similarity.
 
 #### LLM Model
 
-1. **LLM Integration**: Integrate the LLama2 model from Replicate to generate answers based on the context provided by the semantic search.
+1. **LLM Integration**: Integrated the LLama2-7B model from Replicate to generate answers based on the context provided by the semantic search.
    - This includes handling context truncation and ensuring the generation of non-empty answers.
 
 ## Deployment
